@@ -1,0 +1,24 @@
+def search_logs(log_file, keyword):
+    # Search logs for a keyword
+    with open(log_file, "r") as file:
+        return [line.strip() for line in file if keyword in line]
+
+def filter_logs(log_file, filters):
+    # Apply filters to log search
+    with open(log_file, "r") as file:
+        logs = [line.strip() for line in file]
+        filtered_logs = []
+        for log in logs:
+            if all(filter in log for filter in filters):
+                filtered_logs.append(log)
+        return filtered_logs
+
+# Example
+log_file = "log1.log"
+keyword = "error"
+filtered_logs = search_logs(log_file, keyword)
+print(filtered_logs)
+
+filters = ["error", "timestamp", "source"]
+filtered_logs = filter_logs(log_file, filters)
+print(filtered_logs)
