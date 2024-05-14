@@ -1,0 +1,17 @@
+class LogIngestor:
+    def __init__(self):
+        # Initialize APIs and log file paths
+        self.apis = {
+            "api1": "log1.log",
+            "api2": "log2.log",
+            
+        }
+    def log_message(self, api_name, log_level, log_string):
+       
+        log_file = self.apis.get(api_name)
+        if log_file:
+            with open(log_file, "a") as file:
+                file.write(f"{log_level}: {log_string}\n")
+# Example
+log_ingestor = LogIngestor()
+log_ingestor.log_message("api1", "error", "Error occurred in API 1")
