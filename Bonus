@@ -1,0 +1,11 @@
+def search_logs_in_range(log_file, start_date, end_date):
+    # Search logs within a specific date range
+ 
+import re
+
+def search_logs_with_regex(log_file, regex_pattern):
+    # Search logs using regular expressions
+    with open(log_file, "r") as file:
+        logs = [line.strip() for line in file]
+        regex = re.compile(regex_pattern)
+        return [log for log in logs if regex.search(log)]
